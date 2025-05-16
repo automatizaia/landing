@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stethoscope, Sheet as Teeth, Sparkles, ShoppingCart, Dog, Dumbbell, Store } from 'lucide-react';
+import { Stethoscope, Sheet as Teeth, Sparkles, ShoppingCart, Dog, Dumbbell, Store, Building2 } from 'lucide-react';
 
 export const Industries = () => {
   const industries = [
@@ -7,7 +7,7 @@ export const Industries = () => {
       icon: <Stethoscope className="h-8 w-8 text-blue-600" />,
       title: "Clínicas Médicas",
       description: "Automatize agendamentos, lembretes de consultas e forneça informações sobre procedimentos médicos.",
-      image: "https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"
+      image: "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg"
     },
     {
       icon: <Teeth className="h-8 w-8 text-blue-600" />,
@@ -25,7 +25,7 @@ export const Industries = () => {
       icon: <ShoppingCart className="h-8 w-8 text-orange-500" />,
       title: "Supermercados",
       description: "Envie ofertas personalizadas, receba pedidos e forneça informações sobre produtos e disponibilidade.",
-      image: "https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg"
+      image: "https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg"
     },
     {
       icon: <Dog className="h-8 w-8 text-green-500" />,
@@ -40,10 +40,16 @@ export const Industries = () => {
       image: "https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg"
     },
     {
+      icon: <Building2 className="h-8 w-8 text-blue-600" />,
+      title: "Imobiliária",
+      description: "Automatize agendamentos de visitas, envie novidades sobre imóveis e mantenha contato com clientes.",
+      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg"
+    },
+    {
       icon: <Store className="h-8 w-8 text-blue-600" />,
       title: "Comércio em Geral",
       description: "Atenda clientes, responda dúvidas sobre produtos e processe pedidos de forma automatizada.",
-      image: "https://images.pexels.com/photos/264507/pexels-photo-264507.jpeg"
+      image: "https://images.pexels.com/photos/1058958/pexels-photo-1058958.jpeg"
     }
   ];
 
@@ -64,20 +70,22 @@ export const Industries = () => {
           {industries.map((industry, index) => (
             <div 
               key={index}
-              className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 animate-fade-in overflow-hidden"
+              className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 animate-fade-in overflow-hidden group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="h-48 overflow-hidden">
                 <img 
                   src={industry.image} 
                   alt={industry.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">
                 <div className="flex items-center mb-4">
-                  {industry.icon}
-                  <h3 className="text-xl font-semibold text-gray-900 ml-2">
+                  <div className="bg-gray-50 p-2 rounded-lg">
+                    {industry.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 ml-3">
                     {industry.title}
                   </h3>
                 </div>

@@ -39,3 +39,12 @@ html {
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+/* WhatsApp message clip paths */
+.clip-message-left {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%, 8px 50%);
+}
+
+.clip-message-right {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, calc(100% - 8px) 50%, 100% 100%, 0% 100%);
+}
