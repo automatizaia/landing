@@ -51,6 +51,9 @@ export const Contact = () => {
                 {/* Desativa o CAPTCHA do FormSubmit */}
                 <input type="hidden" name="_captcha" value="false" />
 
+  {/* Redireciona após o envio */}
+  <input type="hidden" name="_next" value="https://sua-url.com/obrigado" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <input
                     type="text"
