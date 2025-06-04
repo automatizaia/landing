@@ -1,125 +1,122 @@
-import React from 'react';
-import { MessageSquare, Phone, Mail, Check, MapPin, Clock, Send } from 'lucide-react';
+"use client";
 
-export const Contact = () => {
+import Image from "next/image";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Whatsapp,
+} from "lucide-react";
+import { useState } from "react";
+
+export default function Contact() {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [empresa, setEmpresa] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 to-blue-800/95"></div>
-      </div>
-
-      <div className="container mx-auto px-4 md:px-6 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Vamos Começar sua <span className="text-blue-300">Transformação Digital</span>
-            </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Estamos prontos para ajudar seu negócio a alcançar novos patamares com nossa solução de atendimento inteligente.
+    <section
+      id="contact"
+      className="relative min-h-[580px] bg-center bg-cover bg-no-repeat"
+      style={{ backgroundImage: "url('/assets/bg-contact.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/90" />
+      <div className="container relative z-10 mx-auto flex min-h-[580px] flex-col justify-center gap-12 px-6 py-20 text-white md:flex-row md:items-center md:justify-between">
+        {/* Informações de contato */}
+        <div className="max-w-[400px] space-y-6">
+          <h2 className="text-3xl font-bold">Contato</h2>
+          <p className="max-w-[300px] text-sm leading-relaxed text-white/80">
+            Fale com a gente por qualquer um desses canais.
+          </p>
+          <div className="space-y-4 text-sm">
+            <p className="flex items-center gap-2">
+              <Phone size={20} />
+              <span>(81) 99999-9999</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Mail size={20} />
+              <span>contato@supermercadoamerica.com</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Whatsapp size={20} />
+              <span>(81) 99999-9999</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <MapPin size={20} />
+              <span>Rua das Laranjeiras, 123 - Recife, PE</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Clock size={20} />
+              <span>Seg a Sáb - 7h às 22h</span>
             </p>
           </div>
-
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            {/* Contact Information */}
-            <div className="lg:col-span-5 bg-white/5 backdrop-blur-xl rounded-2xl p-8 text-white border border-white/10">
-              {/* ... (seu conteúdo de contato permanece igual) */}
-            </div>
-
-            {/* Formulário modificado para formsubmit.co */}
-            <div className="lg:col-span-7 bg-white/5 backdrop-blur-xl rounded-2xl p-8 text-white border border-white/10">
-              <form
-                action="https://formsubmit.co/ronaldogouveiajr@gmail.com"
-                method="POST"
-                className="space-y-6"
-              >
-                {/* Anti-spam honeypot */}
-                <input type="hidden" name="_honeypot" style={{ display: 'none' }} />
-                {/* Redirecionamento após envio */}
-                <input type="hidden" name="_next" value="https://seusite.com/obrigado" />
-                {/* Desabilitar captcha, se quiser */}
-                <input type="hidden" name="_captcha" value="false" />
-
-                <div>
-                  <label htmlFor="name" className="block mb-2 font-medium text-white">
-                    Nome
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2 text-white placeholder:text-white/50 focus:border-blue-400 focus:outline-none"
-                    placeholder="Seu nome"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block mb-2 font-medium text-white">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2 text-white placeholder:text-white/50 focus:border-blue-400 focus:outline-none"
-                    placeholder="seu@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block mb-2 font-medium text-white">
-                    Telefone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2 text-white placeholder:text-white/50 focus:border-blue-400 focus:outline-none"
-                    placeholder="(11) 99999-9999"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block mb-2 font-medium text-white">
-                    Empresa
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2 text-white placeholder:text-white/50 focus:border-blue-400 focus:outline-none"
-                    placeholder="Nome da empresa"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block mb-2 font-medium text-white">
-                    Mensagem
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2 text-white placeholder:text-white/50 focus:border-blue-400 focus:outline-none"
-                    placeholder="Escreva sua mensagem aqui"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="inline-flex items-center space-x-2 rounded-md bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition"
-                >
-                  <Send className="w-5 h-5" />
-                  <span>Enviar</span>
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
+
+        {/* Formulário */}
+        <form
+          className="flex w-full max-w-[430px] flex-col gap-4 rounded-md bg-white/10 p-6 backdrop-blur-sm"
+          action="https://formsubmit.co/ronaldogouveijr@gmail.com"
+          method="POST"
+        >
+          {/* Input hidden para redirecionar após o envio (opcional) */}
+          <input type="hidden" name="_next" value="https://seusite.com/obrigado" />
+          {/* Desabilita CAPTCHA */}
+          <input type="hidden" name="_captcha" value="false" />
+
+          <input
+            required
+            type="text"
+            name="nome"
+            placeholder="Nome completo"
+            className="rounded bg-white/20 px-3 py-2 text-white placeholder:text-white/60"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+          <input
+            required
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="rounded bg-white/20 px-3 py-2 text-white placeholder:text-white/60"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="tel"
+            name="telefone"
+            placeholder="Telefone"
+            className="rounded bg-white/20 px-3 py-2 text-white placeholder:text-white/60"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+          />
+          <input
+            type="text"
+            name="empresa"
+            placeholder="Empresa (opcional)"
+            className="rounded bg-white/20 px-3 py-2 text-white placeholder:text-white/60"
+            value={empresa}
+            onChange={(e) => setEmpresa(e.target.value)}
+          />
+          <textarea
+            required
+            name="mensagem"
+            placeholder="Mensagem"
+            className="h-24 resize-none rounded bg-white/20 px-3 py-2 text-white placeholder:text-white/60"
+            value={mensagem}
+            onChange={(e) => setMensagem(e.target.value)}
+          />
+
+          <button
+            type="submit"
+            className="mt-3 rounded bg-green-600 px-4 py-2 font-bold text-white transition-colors hover:bg-green-700"
+          >
+            Enviar mensagem
+          </button>
+        </form>
       </div>
     </section>
   );
-};
+}
