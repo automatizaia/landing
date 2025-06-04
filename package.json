@@ -1,3 +1,7 @@
+"scripts": {
+  "postinstall": "npm install framer-motion",
+  "build": "vite build"
+}
 {
   "name": "vite-react-typescript-starter",
   "private": true,
