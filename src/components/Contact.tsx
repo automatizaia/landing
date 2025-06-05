@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
+import { Textarea } from '../components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Label } from '../components/ui/label';
 import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from ../hooks/use-toast';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
