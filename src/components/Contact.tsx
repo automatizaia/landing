@@ -1,140 +1,148 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Check, X } from 'lucide-react';
+"use client";
 
-export const Contact = () => {
+import { useState } from "react";
+import { Send, MapPin, Phone, Clock } from "lucide-react";
+
+export default function ContatoPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(false);
-    setError(false);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch(
-        'https://formsubmit.co/ajax/ronaldogouveiajr@gmail.com',
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-          },
-          body: formData,
-        }
-      );
+      await fetch("https://formsubmit.co/ronaldogouveiajr@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-      if (response.ok) {
-        setSubmitted(true);
-        form.reset();
-        setTimeout(() => setSubmitted(false), 3000);
-      } else {
-        setError(true);
-        setTimeout(() => setError(false), 3000);
-      }
-    } catch (err) {
-      setError(true);
-      setTimeout(() => setError(false), 3000);
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Erro ao enviar o formulário:", error);
     }
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Toast Sucesso */}
-      {submitted && (
-        <motion.div
-          initial={{ y: -60, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -60, opacity: 0 }}
-          className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2"
-        >
-          <Check className="w-5 h-5" />
-          Mensagem enviada com sucesso!
-        </motion.div>
-      )}
+    <main className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-900 text-white py-10 px-4">
+      {/* Cabeçalho */}
+      <header className="max-w-5xl mx-auto mb-10 text-center">
+        <h1 className="text-4xl font-bold mb-2">Automatiza</h1>
+        <p className="text-white/70">Automatizando processos inteligentes para o seu negócio</p>
+      </header>
 
-      {/* Toast Erro */}
-      {error && (
-        <motion.div
-          initial={{ y: -60, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -60, opacity: 0 }}
-          className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-xl shadow-lg flex items-center gap-2"
-        >
-          <X className="w-5 h-5" />
-          Erro ao enviar a mensagem. Tente novamente.
-        </motion.div>
-      )}
+      {/* Informações de contato */}
+      <section className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 mb-12">
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Entre em contato</h2>
+          <p className="text-white/70">
+            Se você tem dúvidas ou quer implementar automações inteligentes, fale conosco!
+          </p>
 
-      <div className="container mx-auto px-4 grid lg:grid-cols-12 gap-8 items-start">
-        <form
-          onSubmit={handleSubmit}
-          className="lg:col-span-7 bg-white/5 backdrop-blur-xl rounded-2xl p-8 text-white border border-white/10 flex flex-col gap-6 w-full"
-        >
-          <input type="hidden" name="_captcha" value="false" />
+          <div className="flex items-start gap-3">
+            <MapPin className="mt-1 text-blue-400" />
+            <span>
+              Av. das Soluções, 123<br />
+              São Paulo – SP
+            </span>
+          </div>
 
-          <label>
-            Nome
-            <input
-              type="text"
-              name="name"
-              required
-              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-              placeholder="Seu nome"
-            />
-          </label>
+          <div className="flex items-start gap-3">
+            <Phone className="mt-1 text-blue-400" />
+            <span>
+              <a href="tel:+5511999999999" className="hover:underline">
+                (11) 99999-9999
+              </a>{" "}
+              <br />
+              <a
+                href="https://wa.me/5511999999999"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                WhatsApp
+              </a>
+            </span>
+          </div>
 
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              required
-              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-              placeholder="email@exemplo.com"
-            />
-          </label>
+          <div className="flex items-start gap-3">
+            <Clock className="mt-1 text-blue-400" />
+            <span>
+              Atendimento de segunda a sexta<br />
+              das 09h às 18h
+            </span>
+          </div>
+        </div>
 
-          <label>
-            Telefone
-            <input
-              type="tel"
-              name="phone"
-              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-              placeholder="(xx) xxxx-xxxx"
-            />
-          </label>
+        {/* Formulário */}
+        <section className="bg-white/5 p-6 rounded-2xl shadow-lg">
+          <h2 className="text-xl font-bold mb-4 text-center">Envie sua mensagem</h2>
 
-          <label>
-            Empresa
-            <input
-              type="text"
-              name="company"
-              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-              placeholder="Nome da empresa"
-            />
-          </label>
+          {submitted ? (
+            <div className="bg-green-600/20 border border-green-500 rounded-xl p-4 text-center text-green-300 font-semibold">
+              ✅ Mensagem enviada com sucesso! Entraremos em contato em breve.
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="box" />
+              <input
+                type="hidden"
+                name="_autoresponse"
+                value="Recebemos sua mensagem! Em breve retornaremos."
+              />
 
-          <label>
-            Mensagem
-            <textarea
-              name="message"
-              rows={5}
-              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50 resize-none"
-              placeholder="Escreva sua mensagem"
-            />
-          </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Seu nome"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu email"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Seu telefone"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <input
+                type="text"
+                name="company"
+                placeholder="Empresa (opcional)"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <textarea
+                name="message"
+                placeholder="Escreva sua mensagem..."
+                rows={4}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              ></textarea>
 
-          <button
-            type="submit"
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition"
-          >
-            Enviar
-          </button>
-        </form>
-      </div>
-    </section>
+              <button
+                type="submit"
+                className="w-full inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300"
+              >
+                <Send className="w-5 h-5" />
+                Enviar
+              </button>
+            </form>
+          )}
+        </section>
+      </section>
+    </main>
   );
-};
+}
