@@ -7,7 +7,7 @@ export const Contact = () => {
   const [error, setError] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // evita reload da página
+    event.preventDefault();
     setSubmitted(false);
     setError(false);
 
@@ -68,72 +68,73 @@ export const Contact = () => {
         </motion.div>
       )}
 
-      <form
-        onSubmit={handleSubmit}
-        className="lg:col-span-7 bg-white/5 backdrop-blur-xl rounded-2xl p-8 text-white border border-white/10 flex flex-col gap-6"
-      >
-        <input type="hidden" name="_captcha" value="false" />
-        {/* pode usar _next para redirecionar, mas aqui não precisa pois usamos AJAX */}
-
-        <label>
-          Nome
-          <input
-            type="text"
-            name="name"
-            required
-            className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-            placeholder="Seu nome"
-          />
-        </label>
-
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            required
-            className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-            placeholder="email@exemplo.com"
-          />
-        </label>
-
-        <label>
-          Telefone
-          <input
-            type="tel"
-            name="phone"
-            className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-            placeholder="(xx) xxxx-xxxx"
-          />
-        </label>
-
-        <label>
-          Empresa
-          <input
-            type="text"
-            name="company"
-            className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
-            placeholder="Nome da empresa"
-          />
-        </label>
-
-        <label>
-          Mensagem
-          <textarea
-            name="message"
-            rows={5}
-            className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50 resize-none"
-            placeholder="Escreva sua mensagem"
-          />
-        </label>
-
-        <button
-          type="submit"
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition"
+      <div className="container mx-auto px-4 grid lg:grid-cols-12 gap-8 items-start">
+        <form
+          onSubmit={handleSubmit}
+          className="lg:col-span-7 bg-white/5 backdrop-blur-xl rounded-2xl p-8 text-white border border-white/10 flex flex-col gap-6 w-full"
         >
-          Enviar
-        </button>
-      </form>
+          <input type="hidden" name="_captcha" value="false" />
+
+          <label>
+            Nome
+            <input
+              type="text"
+              name="name"
+              required
+              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
+              placeholder="Seu nome"
+            />
+          </label>
+
+          <label>
+            Email
+            <input
+              type="email"
+              name="email"
+              required
+              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
+              placeholder="email@exemplo.com"
+            />
+          </label>
+
+          <label>
+            Telefone
+            <input
+              type="tel"
+              name="phone"
+              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
+              placeholder="(xx) xxxx-xxxx"
+            />
+          </label>
+
+          <label>
+            Empresa
+            <input
+              type="text"
+              name="company"
+              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50"
+              placeholder="Nome da empresa"
+            />
+          </label>
+
+          <label>
+            Mensagem
+            <textarea
+              name="message"
+              rows={5}
+              className="w-full rounded-md bg-transparent border border-white/20 p-3 mt-2 text-white placeholder:text-white/50 resize-none"
+              placeholder="Escreva sua mensagem"
+            />
+          </label>
+
+          <button
+            type="submit"
+            className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 transition"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
     </section>
   );
 };
